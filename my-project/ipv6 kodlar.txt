@@ -1,0 +1,22 @@
+Router>enable 
+Router#conf terminal 
+Router(config)#hostname izmir
+izmir(config)#ipv6 unicast-routing 
+izmir(config)#ipv6 router rip elma
+izmir(config-rtr)#do wr mem
+izmir(config-rtr)#exit
+izmir(config)#interface gigabitEthernet 0/1
+izmir(config-if)#no shutdown
+izmir(config-if)#ipv6 enable
+izmir(config-if)#ipv6 address 2022:1::/64 eui-64
+izmir(config-if)#ipv6 rip elma enable
+izmir(config-if)#do wr mem
+end
+izmir#conf terminal
+izmir(config)#int gigabitEthernet 0/3/0
+izmir(config-if)#no shutdown
+izmir(config-if)#ipv6 enable
+izmir(config-if)#ipv6 address cafe:1::1/64
+izmir(config-if)#ipv6 rip elma enable 
+izmir(config-if)#do wr mem
+izmir(config-if)#exit
